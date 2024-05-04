@@ -53,4 +53,24 @@ router.post('/book-seats', async (req, res) => {
     }
 });
 
+// Route for getting booked seats
+router.get('/get-booked-seats', async (req, res) => {
+    try {
+        // Query the Seat model to retrieve all booked seats
+        const bookedSeats = await Seat.find();
+
+        res.status(200).json({
+            status: 'SUCCESS',
+            message: 'Booked seats retrieved successfully',
+            data: bookedSeats,
+        });
+    } catch (error) {
+        console.error('Error retrieving booked seats:', error);
+        res.status(500).json({
+            status: 'FAILED',
+            message: 'An error occurred while retrieving booked seats',
+        });
+    }
+});
+
 module.exports = router;
