@@ -8,7 +8,7 @@ mongoose
     })
     .then(() => {
         console.log('DB Connected');
-        const dummySeat = new Seat({
+        const newSeat = new Seat({
             date: '2024-05-05',
             month: 'May',
             year: '2024',
@@ -17,8 +17,8 @@ mongoose
             time: '12:00 PM',
             seats: ['A1', 'A2'],
         });
-
-        dummySeat.save()
-            .then(() => console.log('Dummy Seat saved successfully'))
-            .catch(err => console.error('Error saving dummy Seat:', err));
-     }).catch((err) => console.log(err));
+        
+        newSeat.save()
+            .then(() => console.log('Seat saved successfully'))
+            .catch(err => console.error('Error saving Seat:', err));
+    }).catch((err) => console.log(err));
