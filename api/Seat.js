@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Seat = require('./../models/Seat');
+const { listenerCount } = require('npm');
 
 // Your other route handling code...
 
 // Example route for booking seats
-router.post('/book-seats', async (req, res) => {
-    const { date, month, year, mall, titleName, time, seatsArray } = req.body;
+router.post('/book-seats', (req, res) => {
+    let { date, month, year, mall, titleName, time, seatsArray } = req.body;
 
     try {
         // Create a new Seat document and save it to the database
@@ -20,8 +21,7 @@ router.post('/book-seats', async (req, res) => {
             seats: seatsArray, // Assuming seatsArray contains the selected seat numbers
         });
 
-        // Save the new seat data
-        await newSeat.save();
+        newSeat.save();
 
         res.json({
             status: 'SUCCESS',
