@@ -37,9 +37,9 @@ router.get('/get-favorites/:userId', async (req, res) => {
 });
 
 // Route to remove a favorite movie
-router.delete('/remove-favorite/:userId/:movieId', async (req, res) => {
+router.delete('/remove-favorite', async (req, res) => {
+  const { userId, movieId } = req.body;
   try {
-    const { userId, movieId } = req.params;
 
     // Check if the user's favorite movie exists
     const favoriteMovie = await Favorite.findOneAndDelete({ userId, movieId });
