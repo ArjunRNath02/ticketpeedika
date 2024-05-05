@@ -5,4 +5,4 @@ const favoriteSchema = new mongoose.Schema({
   movieId: { type: String, required: true },
 });
 
-module.exports = mongoose.model('Favorite', favoriteSchema);
+module.exports = Favorite;
